@@ -18,16 +18,18 @@ let
         --replace-fail 'Join-Path -Path $PSScriptRoot -ChildPath "DTW.PS.BeautifierValidValuesCache.txt"' 'Join-Path -Path $HOME -ChildPath ".cache/DTW.PS.BeautifierValidValuesCache.txt"'
     '';
 
-    meta = {
-      description = "A whitespace reformatter and code cleaner for Windows PowerShell and PowerShell Core";
-      homepage = "https://github.com/DTW-DanWard/PowerShell-Beautifier";
-      license = lib.licenses.mit;
-      mainProgram = "power-shell-beautifier";
-      platforms = lib.platforms.all;
-    };
   };
 in
-writeShellScriptBin "powershell-beautifier" ''
+(writeShellScriptBin "powershell-beautifier" ''
   ${powershell}/bin/pwsh -NoProfile -NoLogo \
   -Command "Import-Module ${powershell-beautifier}/share/powershell/Modules/PowerShell-Beautifier/PowerShell-Beautifier.psd1; Edit-DTWBeautifyScript -SourcePath \"$@\""
-''
+'')
+// {
+  meta = {
+    description = "A whitespace reformatter and code cleaner for Windows PowerShell and PowerShell Core";
+    homepage = "https://github.com/DTW-DanWard/PowerShell-Beautifier";
+    license = lib.licenses.mit;
+    mainProgram = "power-shell-beautifier";
+    platforms = lib.platforms.all;
+  };
+}
