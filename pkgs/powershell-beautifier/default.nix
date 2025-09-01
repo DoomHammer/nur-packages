@@ -22,7 +22,6 @@ let
       description = "A whitespace reformatter and code cleaner for Windows PowerShell and PowerShell Core";
       homepage = "https://github.com/DTW-DanWard/PowerShell-Beautifier";
       license = lib.licenses.mit;
-      maintainers = with lib.maintainers; [ zxc ];
       mainProgram = "power-shell-beautifier";
       platforms = lib.platforms.all;
     };
