@@ -13,51 +13,26 @@ jobs:
   tests:
     strategy:
       matrix:
-        # Set this to notify the global nur package registry that changes are
-        # available.
-        #
-        # The repo name as used in
-        # https://github.com/nix-community/NUR/blob/master/repos.json
-        nurRepo:
-          - doomhammer/nur-packages
-        cachixName:
-          - doomhammer
-        nixPath:
-          - nixpkgs=https://github.com/NixOS/nixpkgs/archive/refs/heads/nixpkgs-unstable.tar.gz
-          - nixpkgs=https://github.com/NixOS/nixpkgs/archive/refs/heads/nixos-unstable.tar.gz
-          - nixpkgs=https://github.com/NixOS/nixpkgs/archive/refs/heads/nixos-25.05.tar.gz
-    runs-on: ubuntu-latest
+        os:
+          - ubuntu-latest
+          - ubuntu-24.04-arm
+          - macos-latest # M1
+          - macos-13 # Intel
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       - name: Install nix
-        uses: cachix/install-nix-action@v31
+        uses: cachix/install-nix-action@fc6e360bedc9ee72d75e701397f0bb30dce77568 # v31.5.2
         with:
-          nix_path: "${{ matrix.nixPath }}"
-          extra_nix_config: |
-            experimental-features = nix-command flakes
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-      - name: Show nixpkgs version
-        run: nix-instantiate --eval -E '(import <nixpkgs> {}).lib.version'
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup cachix
-        uses: cachix/cachix-action@v16
-        if: ${{ matrix.cachixName != '<YOUR_CACHIX_NAME>' }}
+        uses: cachix/cachix-action@0fc020193b5a1fa3ac4575aa3a7d3aa6a35435ad # v16
         with:
-          name: ${{ matrix.cachixName }}
-          signingKey: "${{ secrets.CACHIX_SIGNING_KEY }}"
+          name: doomhammer
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Check evaluation
-        run: |
-          nix-env -f . -qa \* --meta --xml \
-            --allowed-uris https://static.rust-lang.org \
-            --option restrict-eval true \
-            --option allow-import-from-derivation true \
-            --drv-path --show-trace \
-            -I nixpkgs=$(nix-instantiate --find-file nixpkgs) \
-            -I $PWD
+          pushFilter: "-source$"
       - name: Build nix packages
-        run: nix shell -f '<nixpkgs>' nix-build-uncached -c nix-build-uncached ci.nix -A cacheOutputs
+        run: nix shell --impure nixpkgs#nix-build-uncached -c nix-build-uncached ci.nix -A cacheOutputs -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/$(nix run nixpkgs#jq -- -r '.nodes.nixpkgs.locked.rev' flake.lock).tar.gz
       - name: Trigger NUR update
-        # Don't replace <YOUR_REPO_NAME> here!
-        if: ${{ matrix.nurRepo != '<YOUR_REPO_NAME>' }}
-        run: curl -XPOST "https://nur-update.nix-community.org/update?repo=${{ matrix.nurRepo }}"
+        run: curl -XPOST "https://nur-update.herokuapp.com/update?repo=doomhammer"
