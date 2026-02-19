@@ -1,6 +1,8 @@
 {
+  description = "My personal NUR repository";
+
   inputs = {
-    garnix-lib.url = "github:garnix-io/garnix-lib";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
   nixConfig = {
@@ -8,13 +10,22 @@
     extra-trusted-public-keys = [ "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=" ];
   };
 
-  outputs = inputs: inputs.garnix-lib.lib.mkModules {
-    modules = [
-    ];
-
-    config = { pkgs, ... }: {
-
-      garnix.deployBranch = "main";
+  outputs =
+    { self, nixpkgs }:
+    let
+      forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
+    in
+    {
+      legacyPackages = forAllSystems (
+        system:
+        import ./default.nix {
+          pkgs = import nixpkgs { inherit system; };
+        }
+      );
+      packages = forAllSystems (
+        system: nixpkgs.lib.filterAttrs (_: v: nixpkgs.lib.isDerivation v) self.legacyPackages.${system}
+      );
+      overlays.default = import ./overlay.nix;
+      homeModules.default = import ./modules/home-manager;
     };
-  };
 }
