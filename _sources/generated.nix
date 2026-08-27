@@ -30,16 +30,16 @@
   };
   gitpane = {
     pname = "gitpane";
-    version = "v0.14.0";
+    version = "v0.14.1";
     src = fetchFromGitHub {
       owner = "affromero";
       repo = "gitpane";
-      rev = "v0.14.0";
+      rev = "v0.14.1";
       fetchSubmodules = false;
-      sha256 = "sha256-DukdfTPgrwYykZC+X61c27eQKQRXFWSf9m/jpAMn/iM=";
+      sha256 = "sha256-MDn6SVIaOkctDWrAlPj5lysXWzzQQDMNOtC7fxG/bYU=";
     };
     cargoLock."Cargo.lock" = {
-      lockFile = ./. + "/sha256-DukdfTPgrwYykZC+X61c27eQKQRXFWSf9m_jpAMn_iM=/Cargo.lock";
+      lockFile = ./. + "/sha256-MDn6SVIaOkctDWrAlPj5lysXWzzQQDMNOtC7fxG_bYU=/Cargo.lock";
       outputHashes = {
         
       };
@@ -73,6 +73,24 @@
     };
     date = "2026-08-18";
   };
+  pokepet = {
+    pname = "pokepet";
+    version = "5b60c32341552bf2faa2da0a69fb7b2583019c66";
+    src = fetchFromGitHub {
+      owner = "n-parisi";
+      repo = "pokepet";
+      rev = "5b60c32341552bf2faa2da0a69fb7b2583019c66";
+      fetchSubmodules = false;
+      sha256 = "sha256-zis+b2rjcFPlC5Wn1LnOwYcSMO1RiY1KXsGSSM0fDyc=";
+    };
+    cargoLock."Cargo.lock" = {
+      lockFile = ./. + "/sha256-zis+b2rjcFPlC5Wn1LnOwYcSMO1RiY1KXsGSSM0fDyc=/Cargo.lock";
+      outputHashes = {
+        
+      };
+    };
+    date = "2026-08-24";
+  };
   powershell-beautifier = {
     pname = "powershell-beautifier";
     version = "V1.2.5";
@@ -82,6 +100,17 @@
       rev = "V1.2.5";
       fetchSubmodules = false;
       sha256 = "sha256-N/Wz2TDgQFEW//QR5SwzFFJAiRx8+RoMS842m27mYjM=";
+    };
+  };
+  vpet = {
+    pname = "vpet";
+    version = "v1.0";
+    src = fetchFromGitHub {
+      owner = "jonaustin";
+      repo = "vpet";
+      rev = "v1.0";
+      fetchSubmodules = false;
+      sha256 = "sha256-QvDqa4rM+k0Eb9nwvVUxv4hAAX6jkwEuCUWud7azAug=";
     };
   };
 }

@@ -25,9 +25,15 @@ in
   hammerspoon = pkgs.callPackage ./pkgs/hammerspoon { source = sources.hammerspoon; };
   omniwm = pkgs.callPackage ./pkgs/omniwm { source = sources.omniwm; };
   paperwm-spoon = pkgs.callPackage ./pkgs/paperwm-spoon { source = sources.paperwm-spoon; };
+  pokepet = pkgs.callPackage ./pkgs/pokepet { source = sources.pokepet; };
   powershell-beautifier = pkgs.callPackage ./pkgs/powershell-beautifier {
     source = sources.powershell-beautifier;
   };
   sketchyhelper = pkgs.callPackage ./pkgs/sketchyhelper { };
   sbar_menus = pkgs.callPackage ./pkgs/sbar_menus { };
+  vpet = pkgs.callPackage ./pkgs/vpet { source = sources.vpet; };
+  vpet-tmux = pkgs.callPackage ./pkgs/vpet/tmux.nix {
+    source = sources.vpet;
+    buildTmuxPlugin = pkgs.tmuxPlugins.mkTmuxPlugin;
+  };
 }

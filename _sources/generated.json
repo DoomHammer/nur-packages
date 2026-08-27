@@ -44,7 +44,7 @@
     "gitpane": {
         "cargoLock": {
             "Cargo.lock": [
-                "sha256-DukdfTPgrwYykZC+X61c27eQKQRXFWSf9m_jpAMn_iM=/Cargo.lock",
+                "sha256-MDn6SVIaOkctDWrAlPj5lysXWzzQQDMNOtC7fxG_bYU=/Cargo.lock",
                 {}
             ]
         },
@@ -60,12 +60,12 @@
             "name": null,
             "owner": "affromero",
             "repo": "gitpane",
-            "rev": "v0.14.0",
-            "sha256": "sha256-DukdfTPgrwYykZC+X61c27eQKQRXFWSf9m/jpAMn/iM=",
+            "rev": "v0.14.1",
+            "sha256": "sha256-MDn6SVIaOkctDWrAlPj5lysXWzzQQDMNOtC7fxG/bYU=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.14.0"
+        "version": "v0.14.1"
     },
     "hammerspoon": {
         "cargoLock": null,
@@ -118,6 +118,32 @@
         },
         "version": "cb6dd31a392a0d79ed090befc03f05d0ad375bba"
     },
+    "pokepet": {
+        "cargoLock": {
+            "Cargo.lock": [
+                "sha256-zis+b2rjcFPlC5Wn1LnOwYcSMO1RiY1KXsGSSM0fDyc=/Cargo.lock",
+                {}
+            ]
+        },
+        "date": "2026-08-24",
+        "extract": null,
+        "name": "pokepet",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "n-parisi",
+            "repo": "pokepet",
+            "rev": "5b60c32341552bf2faa2da0a69fb7b2583019c66",
+            "sha256": "sha256-zis+b2rjcFPlC5Wn1LnOwYcSMO1RiY1KXsGSSM0fDyc=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "5b60c32341552bf2faa2da0a69fb7b2583019c66"
+    },
     "powershell-beautifier": {
         "cargoLock": null,
         "date": null,
@@ -138,5 +164,26 @@
             "type": "github"
         },
         "version": "V1.2.5"
+    },
+    "vpet": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "vpet",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "jonaustin",
+            "repo": "vpet",
+            "rev": "v1.0",
+            "sha256": "sha256-QvDqa4rM+k0Eb9nwvVUxv4hAAX6jkwEuCUWud7azAug=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v1.0"
     }
 }
