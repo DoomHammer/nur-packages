@@ -144,6 +144,32 @@
         },
         "version": "e86139b4dfe9a181be900c7b21a54ee10a4a5a5d"
     },
+    "pokepet": {
+        "cargoLock": {
+            "Cargo.lock": [
+                "sha256-zis+b2rjcFPlC5Wn1LnOwYcSMO1RiY1KXsGSSM0fDyc=/Cargo.lock",
+                {}
+            ]
+        },
+        "date": "2026-08-24",
+        "extract": null,
+        "name": "pokepet",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "n-parisi",
+            "repo": "pokepet",
+            "rev": "5b60c32341552bf2faa2da0a69fb7b2583019c66",
+            "sha256": "sha256-zis+b2rjcFPlC5Wn1LnOwYcSMO1RiY1KXsGSSM0fDyc=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "5b60c32341552bf2faa2da0a69fb7b2583019c66"
+    },
     "powershell-beautifier": {
         "cargoLock": null,
         "date": null,
