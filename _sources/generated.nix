@@ -107,6 +107,24 @@
     };
     date = "2026-09-03";
   };
+  pokepet = {
+    pname = "pokepet";
+    version = "5b60c32341552bf2faa2da0a69fb7b2583019c66";
+    src = fetchFromGitHub {
+      owner = "n-parisi";
+      repo = "pokepet";
+      rev = "5b60c32341552bf2faa2da0a69fb7b2583019c66";
+      fetchSubmodules = false;
+      sha256 = "sha256-zis+b2rjcFPlC5Wn1LnOwYcSMO1RiY1KXsGSSM0fDyc=";
+    };
+    cargoLock."Cargo.lock" = {
+      lockFile = ./. + "/sha256-zis+b2rjcFPlC5Wn1LnOwYcSMO1RiY1KXsGSSM0fDyc=/Cargo.lock";
+      outputHashes = {
+        
+      };
+    };
+    date = "2026-08-24";
+  };
   powershell-beautifier = {
     pname = "powershell-beautifier";
     version = "V1.2.5";
